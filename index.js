@@ -1,4 +1,6 @@
+/* initialise global variables */
 let game,
+    gamePiece = '🟣',
     startingPosition = 1,
     finishPosition = 100,
     totalSquares = [...Array(finishPosition).keys()].map(x => x+1),
@@ -7,21 +9,27 @@ let game,
     currentPosition = startingPosition,
     tempPosition;
 
+/* dice roll function that returns a promise based on which the turn is completed*/
 const rollDice = () => {
     return new Promise((resolve, reject) => {
         const roll = Math.floor(Math.random() * 6 + 1);
         console.log(`You rolled a ${roll}`);
 
         tempPosition = currentPosition + roll;
-
-        if (tempPosition < 100 || tempPosition === 100) resolve(roll);
+        if (tempPosition < finishPosition || tempPosition === finishPosition) resolve(roll);
         else reject(roll);
     });
 };
 
+/*
+    handles all scenarios for a valid dice roll 
+    1 - land on a snake (move back 3 spaces)
+    2 - land on a ladder (move up 10 spaces)
+    3 - land on the last square of the board (win the game) 
+*/ 
 const handleValidRoll = (roll) => {
     currentPosition += roll;
-    if (tempPosition < 100) {
+    if (tempPosition < finishPosition) {
         console.log(`You are now at square ${currentPosition}`);
 
         if (snakes.includes(tempPosition)) {
@@ -40,14 +48,19 @@ const handleValidRoll = (roll) => {
     console.log('------------------------------------');
 };
 
+/* 
+    handles all scenarios for an invalid dice roll 
+    1 - your piece can only move up till the last square
+*/ 
 const handleInvalidRoll = (roll) => {
-    if (tempPosition > 100) {
+    if (tempPosition > finishPosition) {
         console.log(`You cannot move ahead`);
         console.log(`You are still at square ${currentPosition}`);
     };
     console.log('------------------------------------');
 };
 
+/* moves the game piece to its new position */
 const movePiece = () => {
     const currentSpot = document.getElementsByClassName('active');
     if (currentSpot.length > 0) { 
@@ -57,9 +70,10 @@ const movePiece = () => {
 
     const newSpot = document.getElementById(`cell-${currentPosition}`);
     newSpot.classList.add('active');
-    newSpot.innerHTML = '🏃🏽‍♀️';
+    newSpot.innerHTML = gamePiece;
 };
 
+/* main function */
 const play = () => {
     document.getElementById('play').setAttribute('disabled', '');
 
@@ -77,6 +91,7 @@ const play = () => {
     }, 1000);
 };
 
+/* drives the functionality of the reset button so that user can reinitiate */
 const reset = () => {
     clearInterval(game);
     currentPosition = startingPosition;
@@ -84,6 +99,7 @@ const reset = () => {
     document.getElementById('play').removeAttribute('disabled');
 };
 
+/* main render function to paint dom */
 const render = () => {
     /* heading */
     const heading = document.createElement('h1');
@@ -142,10 +158,10 @@ const render = () => {
         ladderCell.setAttribute('class', 'ladder');
     };
 
-    /* add game piece*/
+    /* add game piece to starting position */
     const startingSquare = document.getElementById(`cell-${currentPosition}`);
     startingSquare.setAttribute('class', 'active');
-    startingSquare.innerHTML = '🏃🏽‍♀️';
+    startingSquare.innerHTML = gamePiece;
 
     /* play button */
     const playBtn = document.createElement('button');
