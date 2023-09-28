@@ -1,5 +1,7 @@
 # Snakes & Ladders
-Take a trip down memory lane with a game of Snakes &amp; Ladders. Built with Vanilla HTML/JS/CSS with no external NPM dependencies.
+Take a trip down memory lane with a game of Snakes &amp; Ladders. Built with Vanilla `HTML`, `JavaScript`, and `CSS` with no external NPM dependencies.
+
+srishtisuri.github.io/snakes-and-ladders/
 
 ## Rules
 
@@ -13,13 +15,14 @@ For example: if it is at square 98 and you roll a 5, the piece will not move
 ## How To Play
 
 - Open up your browser DevTools and navigate to the 'Console' tab
-- While the game is running, the moves will be logged onto the Console
+- While the game is running, the moves will be logged onto the console
 - Click the 'Play' button to start the game
+- Once 'Play' is clicked, it will be disabled to prevent a concurrent game from being triggered
 - You can click the 'Reset' button at any time. This will stop the game if it is running and will reset the game variables to their initial state
 
 ## Technical Notes
 
-Snakes and Ladders was a vanilla JS challenge. It was timeboxed and built with some key considerations in mind, as best as time would permit.
+Snakes and Ladders was a vanilla `JS` challenge. It was timeboxed and built with some key considerations in mind, as best as time would permit.
 
 ### Scalability
 The game variables that are initialised at the beginning of index.js have been intentionally abstracted out of the core methods. In a future state, these abstractions would be tested for alternate scenarios. For example, `finishPosition` is leveraged by `totalSquares` which in turn drives how big the board is.
@@ -37,3 +40,4 @@ The UI was not part of the original requirements but was built as a personal cha
 - Show the game piece move to the snake and ladder pieces before redirecting
 - Introduce a pause button
 - Print the console logs somewhere in the UI
+- Prevent square numbers from disappearing when the piece is on it
