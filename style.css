@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+table {
+    border-spacing: 0px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+    border: 0.5px solid black;
+    font-size: 10px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.active {
+    font-size: 35px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.snake, .ladder {
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.snake {
+    background-image: url('./snake.png');
+}
+
+.ladder {
+    background-image: url('./ladder.png');
+}
+
+button {
+    margin-top: 50px;
+    margin-right: 20px;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+#play {
+    background-color: rgb(246, 68, 77);
+}
+
+#play:disabled {
+    background-color: rgba(0, 0, 0, 0.648);
+    cursor: not-allowed;
+}
+
+#reset {
+    background-color: rgb(0, 170, 222);
+}
