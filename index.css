@@ -1,0 +1,37 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+table {
+    border: 0.25px solid black;
+    border-spacing: 0px;
+}
+
+td {
+    border: 0.25px solid black;
+    height: 50px;
+    width: 50px;
+    font-size: 8px;
+    vertical-align: top;
+    text-align: right;
+}
+
+.snake, .ladder, .active {
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.snake {
+    background-image: url('./assets/snake.png');
+    background-color: #ff870033;
+}
+
+.ladder {
+    background-image: url('./assets/ladder.png');
+    background-color: #00e51633;
+}
+
+.active {
+    background-image: url('./assets/person.png');
+}
